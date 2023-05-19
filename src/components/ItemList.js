@@ -1,6 +1,7 @@
 import React from "react";
 import items from "@/data/todos.js";
 import Item from "@/components/Item.js";
+import ItemViewSelector from "./ItemViewSelector";
 
 const ItemList = function (props) {
   const [itemsState, setItemsState] = React.useState(items);
@@ -15,7 +16,13 @@ const ItemList = function (props) {
   return (
     <section id="itemList">
       {itemsState.map((item) => {
-        return <Item item={item} onChange={onItemChanged} key={item.id} />;
+        return (
+          <ItemViewSelector
+            item={item}
+            onChange={onItemChanged}
+            key={item.id}
+          />
+        );
       })}
     </section>
   );
