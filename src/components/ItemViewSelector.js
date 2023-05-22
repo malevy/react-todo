@@ -21,10 +21,9 @@ function ItemViewSelector({ item, onChange }) {
   if (isEditing) {
     return <ItemEditor item={item} onSave={save} onCancel={cancel} />;
   } else {
-    console.log("rendering item viewer");
     return (
       <div>
-        <item item={item} onChange={save} />
+        <Item item={item} onChange={save} />
         <i className="fas fa-pen fa-lg" onClick={() => setIsEditing(true)} />
       </div>
     );

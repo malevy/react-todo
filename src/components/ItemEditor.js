@@ -5,9 +5,9 @@ function ItemEditor({ item, onSave, onCancel }) {
   const [itemState, setItemState] = React.useState(item);
 
   function apply(mutator) {
-    // const newItem = { ...itemState };
-    // mutator(newItem);
-    // setItemState(newItem);
+    const newItem = { ...itemState };
+    mutator(newItem);
+    setItemState(newItem);
   }
 
   const save = () => onSave(itemState);
