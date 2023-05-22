@@ -24,6 +24,7 @@ function ItemViewSelector({ item }) {
       <div>
         <Item item={item} />
         <i className="fas fa-pen fa-lg" onClick={() => setIsEditing(true)} />
+        <i className="fas fa-trash fa-lg" onClick={() => removeItem(item)} />
       </div>
     );
   }

@@ -15,12 +15,12 @@ export function ItemsProvider({ children }) {
 
   function removeItem(victim) {
     const newCollection = itemsState.filter((item) => item.id != victim.id);
-    setItemState(newCollection);
+    setItemsState(newCollection);
   }
 
   function addItem(newItem) {
     const newCollection = [...itemsState, newItem];
-    setItemState(newCollection);
+    setItemsState(newCollection);
   }
 
   const contextValue = { itemsState, saveItem, removeItem, addItem };
