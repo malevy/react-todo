@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import ItemList from "@/components/ItemList";
+import { ItemsProvider } from "@/contexts/ItemContext.js";
 
 const Home = function () {
   return (
@@ -14,7 +15,9 @@ const Home = function () {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <ItemList></ItemList>
+        <ItemsProvider>
+          <ItemList />
+        </ItemsProvider>
       </main>
     </>
   );

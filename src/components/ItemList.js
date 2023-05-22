@@ -1,28 +1,14 @@
 import React from "react";
-import items from "@/data/todos.js";
-import Item from "@/components/Item.js";
 import ItemViewSelector from "./ItemViewSelector";
+import { useItemContext } from "@/contexts/ItemContext";
 
 const ItemList = function (props) {
-  const [itemsState, setItemsState] = React.useState(items);
-
-  const onItemChanged = (newItem) => {
-    const newCollection = itemsState.map((item) =>
-      item.id === newItem.id ? newItem : item
-    );
-    setItemsState(newCollection);
-  };
+  const { itemsState } = useItemContext();
 
   return (
     <section id="itemList">
       {itemsState.map((item) => {
-        return (
-          <ItemViewSelector
-            item={item}
-            onChange={onItemChanged}
-            key={item.id}
-          />
-        );
+        return <ItemViewSelector item={item} key={item.id} />;
       })}
     </section>
   );

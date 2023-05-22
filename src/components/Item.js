@@ -6,11 +6,6 @@ export default function Item({ item, onChange }) {
     stylesToApply.push(styles.completed);
   }
 
-  const flipImportance = () => {
-    const newItem = { ...item, important: !item.important };
-    onChange(newItem);
-  };
-
   const flipComplete = () => {
     const newItem = { ...item, completed: !item.completed };
     onChange(newItem);

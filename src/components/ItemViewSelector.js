@@ -1,16 +1,15 @@
 import React from "react";
 import Item from "@/components/Item.js";
 import ItemEditor from "@/components/ItemEditor.js";
+import { useItemContext } from "@/contexts/ItemContext";
 
-function editButton({ props }) {
-  return;
-}
-
-function ItemViewSelector({ item, onChange }) {
+function ItemViewSelector({ item }) {
   const [isEditing, setIsEditing] = React.useState(false);
 
+  const { saveItem, removeItem } = useItemContext();
+
   function save(item) {
-    onChange(item);
+    saveItem(item);
     setIsEditing(false);
   }
 
@@ -23,7 +22,7 @@ function ItemViewSelector({ item, onChange }) {
   } else {
     return (
       <div>
-        <Item item={item} onChange={save} />
+        <Item item={item} />
         <i className="fas fa-pen fa-lg" onClick={() => setIsEditing(true)} />
       </div>
     );
