@@ -10,6 +10,11 @@ function ItemEditor({ item, onSave, onCancel }) {
     setItemState(newItem);
   }
 
+  function applyChange(property, newValue) {
+    const newItem = { ...itemState, [property]: newValue };
+    setItemState(newItem);
+  }
+
   const save = () => onSave(itemState);
   const cancel = () => onCancel();
 
@@ -20,11 +25,7 @@ function ItemEditor({ item, onSave, onCancel }) {
         <input
           type="text"
           value={itemState.task}
-          onChange={(e) =>
-            apply((i) => {
-              i.task = e.target.value;
-            })
-          }
+          onChange={(e) => applyChange("task", e.target.value)}
         />
       </label>
       <label>
@@ -32,11 +33,7 @@ function ItemEditor({ item, onSave, onCancel }) {
         <input
           type="checkbox"
           checked={itemState.important}
-          onChange={(e) =>
-            apply((i) => {
-              i.important = e.target.checked;
-            })
-          }
+          onChange={(e) => applyChange("important", e.target.checked)}
         />
       </label>
       <label>
@@ -44,11 +41,7 @@ function ItemEditor({ item, onSave, onCancel }) {
         <input
           type="checkbox"
           checked={itemState.completed}
-          onChange={(e) =>
-            apply((i) => {
-              i.completed = e.target.checked;
-            })
-          }
+          onChange={(e) => applyChange("completed", e.target.checked)}
         />
       </label>
       <i className="fas fa-save fa-lg save-button" onClick={save}></i>

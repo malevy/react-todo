@@ -34,7 +34,7 @@ export function useItemContext() {
   const context = React.useContext(ItemContext);
   if (!context) {
     throw new Error(
-      "useItemContext must be used within the context of an ItemContext"
+      "useItemContext must be used within the context of an ItemsProvider"
     );
   }
   return context;
