@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/styles/ItemEditor.module.css";
+import styles from "../styles/ItemEditor.module.css";
 
 function ItemEditor({ item, onSave, onCancel }) {
   const [itemState, setItemState] = React.useState(item);

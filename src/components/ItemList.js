@@ -1,6 +1,6 @@
 import React from "react";
 import ItemViewSelector from "./ItemViewSelector";
-import { useItemContext } from "@/contexts/ItemContext";
+import { useItemContext } from "../contexts/ItemContext";
 
 const ItemList = function (props) {
   const { itemsState } = useItemContext();

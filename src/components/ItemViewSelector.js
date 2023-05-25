@@ -1,7 +1,7 @@
 import React from "react";
-import Item from "@/components/Item.js";
-import ItemEditor from "@/components/ItemEditor.js";
-import { useItemContext } from "@/contexts/ItemContext";
+import Item from "./Item.js";
+import ItemEditor from "./ItemEditor.js";
+import { useItemContext } from "../contexts/ItemContext";
 
 function ItemViewSelector({ item }) {
   const [isEditing, setIsEditing] = React.useState(false);

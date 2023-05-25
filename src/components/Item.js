@@ -1,4 +1,4 @@
-import styles from "@/styles/item.module.css";
+import styles from "../styles/Item.module.css";
 
 export default function Item({ item, onChange }) {
   const stylesToApply = [styles.item];

@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import items from "@/data/todos.js";
+import React from "react";
+import items from "../data/todos.js";
 
 const ItemContext = React.createContext();
 
@@ -14,7 +14,7 @@ export function ItemsProvider({ children }) {
   }
 
   function removeItem(victim) {
-    const newCollection = itemsState.filter((item) => item.id != victim.id);
+    const newCollection = itemsState.filter((item) => item.id !== victim.id);
     setItemsState(newCollection);
   }
 
