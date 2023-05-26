@@ -19,11 +19,29 @@ export function ItemsProvider({ children }) {
   }
 
   function addItem(newItem) {
+    const nextId =
+      itemsState.reduce((max, item) => (item.id > max ? item.id : max), -1) + 1;
+    newItem.id = nextId;
     const newCollection = [...itemsState, newItem];
     setItemsState(newCollection);
   }
 
-  const contextValue = { itemsState, saveItem, removeItem, addItem };
+  function createItem() {
+    return {
+      id: 0,
+      task: "",
+      important: false,
+      completed: false,
+    };
+  }
+
+  const contextValue = {
+    itemsState,
+    saveItem,
+    removeItem,
+    addItem,
+    createItem,
+  };
 
   return (
     <ItemContext.Provider value={contextValue}>{children}</ItemContext.Provider>

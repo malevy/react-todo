@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../styles/ItemEditor.module.css";
 
 function ItemEditor({ item, onSave, onCancel }) {
   const [itemState, setItemState] = React.useState(item);
+
+  // update the component's state when the prop changed
+  useEffect(() => {
+    setItemState(item);
+  }, [item]);
 
   function apply(mutator) {
     const newItem = { ...itemState };
