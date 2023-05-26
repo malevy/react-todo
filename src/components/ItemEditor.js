@@ -9,12 +9,6 @@ function ItemEditor({ item, onSave, onCancel }) {
     setItemState(item);
   }, [item]);
 
-  function apply(mutator) {
-    const newItem = { ...itemState };
-    mutator(newItem);
-    setItemState(newItem);
-  }
-
   function applyChange(property, newValue) {
     const newItem = { ...itemState, [property]: newValue };
     setItemState(newItem);
