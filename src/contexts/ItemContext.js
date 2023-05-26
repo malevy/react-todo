@@ -1,10 +1,10 @@
 import React from "react";
-import items from "../data/todos.js";
+import todoGateway from "../gateways/TodoApiGateway.js";
 
 const ItemContext = React.createContext();
 
 export function ItemsProvider({ children }) {
-  const [itemsState, setItemsState] = React.useState(items);
+  const [itemsState, setItemsState] = React.useState(todoGateway.getAll);
 
   function saveItem(newItem) {
     const newCollection = itemsState.map((item) =>
