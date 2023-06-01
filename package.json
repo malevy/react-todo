@@ -18,7 +18,7 @@
   },
   "scripts": {
     "dev": "npm-run-all --parallel api start",
-    "api":"json-server ./data/todos.js",
+    "api":"json-server ./data/todos.js --port 3001",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

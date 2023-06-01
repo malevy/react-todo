@@ -7,9 +7,10 @@ const ItemList = function (props) {
 
   return (
     <section id="itemList">
-      {itemsState.map((item) => {
-        return <ItemViewSelector item={item} key={item.id} />;
-      })}
+      {itemsState &&
+        itemsState.map((item) => {
+          return <ItemViewSelector item={item} key={item.id} />;
+        })}
     </section>
   );
 };

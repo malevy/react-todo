@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const client = axios.create({
-  baseURL: "http://localhost:3000/todos/",
+  baseURL: "http://localhost:3001/todos/",
 });
 
 // TODO - add error handling
@@ -22,10 +22,18 @@ function todoGateway() {
     return resp.data;
   };
 
+  const remove = async (item) => {
+    const resp = await client.delete(`${item.id}`);
+    if (resp.status !== 200) {
+      throw new Error("unable to remove the item");
+    }
+  };
+
   return {
     getAll,
     saveNew,
     save,
+    remove,
   };
 }
 

@@ -1,31 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import todoGateway from "../gateways/TodoApiGateway.js";
 
 const ItemContext = React.createContext();
 
 export function ItemsProvider({ children }) {
-  const [itemsState, setItemsState] = React.useState(todoGateway.getAll);
+  const [itemsState, setItemsState] = React.useState([]);
 
-  function saveItem(newItem) {
-    const newCollection = itemsState.map((item) =>
-      item.id === newItem.id ? newItem : item
-    );
-    setItemsState(newCollection);
+  useEffect(() => {
+    _refresh();
+  }, []);
+
+  async function _refresh() {
+    const items = await todoGateway.getAll();
+    setItemsState(items);
   }
 
-  function removeItem(victim) {
-    const newCollection = itemsState.filter((item) => item.id !== victim.id);
-    setItemsState(newCollection);
+  async function saveItem(newItem) {
+    await todoGateway.save(newItem);
+    _refresh();
   }
 
-  function addItem(newItem) {
-    const nextId =
-      itemsState.reduce((max, item) => (item.id > max ? item.id : max), -1) + 1;
-    newItem.id = nextId;
-    const newCollection = [...itemsState, newItem];
-    setItemsState(newCollection);
+  async function removeItem(victim) {
+    await todoGateway.remove(victim);
+    _refresh();
   }
 
+  async function addItem(newItem) {
+    await todoGateway.saveNew(newItem);
+    _refresh();
+  }
+
+  /**
+   * factory method to create a blank item
+   * @returns
+   */
   function createItem() {
     return {
       id: 0,
