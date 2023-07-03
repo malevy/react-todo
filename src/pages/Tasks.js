@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ItemsProvider } from "../contexts/ItemContext.js";
 import ItemList from "../components/ItemList.js";
 import ItemAdder from "../components/ItemAdder";
+import ItemBulkOperations from "../components/ItemBulkOperations.js";
 
 function Tasks() {
   return (
@@ -13,6 +14,7 @@ function Tasks() {
       </header>
       <ItemsProvider>
         <ItemAdder />
+        <ItemBulkOperations />
         <ItemList />
       </ItemsProvider>
     </div>

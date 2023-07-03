@@ -31,6 +31,31 @@ export function ItemsProvider({ children }) {
   }
 
   /**
+   * making a API call for each todo item is less than optimal.
+   * it would be better if the API has an operation to handle this
+   * server side.
+   * TODO: investigate if JSONAPI can do this
+   */
+  async function markAllCompleted() {
+    const apiResults = itemsState
+      .map((item) => {
+        item.completed = true;
+        return item;
+      })
+      .map(todoGateway.save);
+
+    // really should do something for errors. make that tomorrow's problem
+    await Promise.all(apiResults);
+    _refresh();
+  }
+
+  async function removeAll() {
+    const apiResults = itemsState.map(todoGateway.remove);
+    await Promise.all(apiResults);
+    _refresh();
+  }
+
+  /**
    * factory method to create a blank item
    * @returns
    */
@@ -49,6 +74,8 @@ export function ItemsProvider({ children }) {
     removeItem,
     addItem,
     createItem,
+    markAllCompleted,
+    removeAll,
   };
 
   return (
