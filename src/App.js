@@ -1,16 +1,19 @@
 import "./App.css";
-import { ItemsProvider } from "./contexts/ItemContext.js";
-import ItemList from "./components/ItemList.js";
-import ItemAdder from "./components/ItemAdder";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Tasks from "./pages/Tasks.js";
+import About from "./pages/About.js";
 
 function App() {
   return (
-    <div className="App">
-      <ItemsProvider>
-        <ItemAdder />
-        <ItemList />
-      </ItemsProvider>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Tasks />} />
+          <Route path="/tasks" element={<Tasks />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
